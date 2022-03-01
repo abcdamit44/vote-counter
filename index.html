@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter's Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .votes {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            width: 30%;
+            padding: 1.5vw;
+            color: #000;
+            border: 1px solid grey;
+            box-shadow: 2px 2px 2px 2px grey;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 300ms ease-in-out;
+        }
+        
+        .btn:hover {
+            background-color: rgb(132, 161, 250);
+            color: #fff;
+        }
+        
+        p {
+            width: 80%;
+            margin: 3vw auto;
+            font-size: 1.2vw;
+            font-weight: 600;
+        }
+        
+        button {
+            display: inline-block;
+            padding: 1.5vw;
+            color: #000;
+            border: 1px solid grey;
+            box-shadow: 2px 2px 2px 2px grey;
+            outline: none;
+            border-radius: 3px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 300ms ease-in-out;
+        }
+        
+        button:hover {
+            background-color: rgb(241, 95, 115);
+            color: #fff;
+        }
+        
+        .submit-btn {
+            margin: 5vw;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .vote-display {
+            width: 80%;
+            margin: 2vw auto;
+            text-align: start;
+        }
+        
+        #reset {
+            margin-left: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        You have to create a page whose title will be Voter's Page. in which 3 parties are BJP, CONGRESS, and MNS. so you are to create a button for each. now after the page is created. when I vote like a voter, then you have to tell how many people have voted
+        for BJP, CONGRESS, and how many people have voted for MNS. there should be a button which name is submitted. when you click on the submit button result should be shown at the bottom of your page like BJP got this...votes, congress got this...
+        votes and MNS got this ....Votes also, try to calculate total votes.
+    </p>
+    <div class="votes">
+        <div class="btn" id="bjp-btn" onclick="bjpVote()">BJP</div>
+        <div class="btn" id="con-btn" onclick="conVote()">Congress</div>
+        <div class="btn" id="mns-btn" onclick="mnsVote()">MNS</div>
+    </div>
+
+    <div class="submit-btn">
+        <button id="submit" onclick="submitVote()">Submitted</button>
+        <button id="reset" onclick="reset()">Reset</button>
+    </div>
+
+    <div class="vote-display">
+        <h1 style="color:orangered">BJP = <span id="vote-bjp">0</span></h1>
+        <h1 style="color:green">CONGRESS = <span id="vote-con">0</span></h1>
+        <h1 style="color:yellow">MNS = <span id="vote-mns">0</span></h1>
+        <h1 style="color:purple">Total Votes:
+            <Span id="totalVotes">0</Span>
+        </h1>
+    </div>
+
+
+
+    <script>
+        let bjp = document.getElementById("bjp-btn");
+        let con = document.getElementById("con-btn");
+        let mns = document.getElementById("mns-btn");
+        let count1, count2, count3;
+
+        function bjpVote() {
+            let bjpCount = 0;
+            let val1 = document.getElementById("vote-bjp");
+            bjpCount = parseInt(val1.innerHTML);
+            bjpCount++;
+            val1.innerHTML = bjpCount;
+            count1 = bjpCount;
+        }
+
+        function conVote() {
+            let conCount = 0;
+            let val2 = document.getElementById("vote-con");
+            conCount = parseInt(val2.innerHTML);
+            conCount++;
+            val2.innerHTML = conCount;
+            count2 = conCount;
+        }
+
+        function mnsVote() {
+            let mnsCount = 0;
+            let val3 = document.getElementById("vote-mns");
+            mnsCount = parseInt(val3.innerHTML);
+            mnsCount++;
+            val3.innerHTML = mnsCount;
+            count3 = mnsCount;
+        }
+
+        let submit = document.getElementById("submit");
+
+        function submitVote() {
+            let total = document.getElementById("totalVotes");
+            let totalCount = count1 + count2 + count3;
+            total.innerHTML = totalCount;
+        }
+
+        function reset() {
+            location.reload()
+        }
+    </script>
+</body>
+
+</html>
